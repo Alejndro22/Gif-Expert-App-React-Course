@@ -3,7 +3,7 @@ import { useFetchGifs } from "../hooks/useFetchGifs";
 
 export const GifGrid = ({ category, onDeleteCategory }) => {
   const { gifs, isLoading } = useFetchGifs(category);
-  const deleteCategory = () => {
+  const onRemovePressed = () => {
     onDeleteCategory(category);
   };
 
@@ -11,7 +11,7 @@ export const GifGrid = ({ category, onDeleteCategory }) => {
     <>
       <div className="GridHeading">
         <h3>{category}</h3>
-        <button onClick={deleteCategory}>Delete</button>
+        <button onClick={onRemovePressed}>Delete</button>
       </div>
 
       {isLoading && <h2>Cargando...</h2>}

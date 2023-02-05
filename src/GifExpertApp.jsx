@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import { GifGrid } from "./components/GifGrid";
+import { AddCategory, GifGrid } from "./components";
 
 export const GifExpertApp = () => {
   const [categories, setCategories] = useState(["One Punch"]);
@@ -8,14 +7,12 @@ export const GifExpertApp = () => {
   const onAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return;
     setCategories((categos) => [newCategory, ...categos]);
-    // otra forma es usando el callback de setState (igual que WebDev)
   };
 
   const onRemoveCategory = (removeCategory) => {
     setCategories((categos) =>
       categos.filter((item) => item !== removeCategory)
     );
-    // otra forma es usando el callback de setState (igual que WebDev)
   };
 
   return (
