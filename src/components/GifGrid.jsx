@@ -1,20 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getGifs } from "../helpers/getGifs";
 
 export const GifGrid = ({ category }) => {
-  // Use effect se utiliza para disparar efectos secundarios, en otras palabras,
-  // un proceso a ejecutar cuando algo suceda
+  const [gifs, setGifs] = useState([]);
 
-  // Cuando el arreglo de dependencias queda vacio, solo se ejecuta la primera vez que
-  // se construye el componente
+  // No puedo usar Async en un useEffect pues es una promesa, pero se puede ejecutar
+  // Una funcion desde fuera que si sea async
+  const getRelatedGifs = async () => {
+    const newGifs = await getGifs(category);
+    setGifs(newGifs);
+  };
+
   useEffect(() => {
-    getGifs(category);
+    getRelatedGifs();
   }, []);
 
   return (
     <>
       <h3>{category}</h3>
-      <p>Hola Mundo</p>
+      <ol>
+        {gifs.map(({ id, title }) => (
+          <li key={id}>{title}</li>
+        ))}
+      </ol>
     </>
   );
 };
