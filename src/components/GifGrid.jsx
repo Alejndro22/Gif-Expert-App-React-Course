@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { GifGridItem } from "./GifGridItem";
 import { getGifs } from "../helpers/getGifs";
 
 export const GifGrid = ({ category }) => {
@@ -18,11 +19,12 @@ export const GifGrid = ({ category }) => {
   return (
     <>
       <h3>{category}</h3>
-      <ol>
-        {gifs.map(({ id, title }) => (
-          <li key={id}>{title}</li>
+      <div className="card-grid">
+        {gifs.map((image) => (
+          // Puedo usar spread para esparcir los properties sin tener que definir uno por uno
+          <GifGridItem key={image.id} {...image} />
         ))}
-      </ol>
+      </div>
     </>
   );
 };
