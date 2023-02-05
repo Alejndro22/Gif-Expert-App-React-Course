@@ -16,7 +16,7 @@ export const GifExpertApp = () => {
 
       {/* Input */}
       <AddCategory
-        setCategories={setCategories}
+        // setCategories={setCategories}
         onNewCategory={(value) => onAddCategory(value)}
       />
 
