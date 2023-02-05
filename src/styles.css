@@ -61,3 +61,17 @@ h3 {
 .card img {
   width: 100%;
 }
+
+.GridHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.GridHeading button {
+  font-size: 1rem;
+  height: 40px;
+  padding: 5px 10px;
+  background: #f44336;
+  color: white;
+}

@@ -11,6 +11,13 @@ export const GifExpertApp = () => {
     // otra forma es usando el callback de setState (igual que WebDev)
   };
 
+  const onRemoveCategory = (removeCategory) => {
+    setCategories((categos) =>
+      categos.filter((item) => item !== removeCategory)
+    );
+    // otra forma es usando el callback de setState (igual que WebDev)
+  };
+
   return (
     <>
       <h1>GifExpertApp</h1>
@@ -18,7 +25,11 @@ export const GifExpertApp = () => {
       <AddCategory onNewCategory={(value) => onAddCategory(value)} />
 
       {categories.map((category) => (
-        <GifGrid key={category} category={category} />
+        <GifGrid
+          key={category}
+          category={category}
+          onDeleteCategory={(value) => onRemoveCategory(value)}
+        />
       ))}
     </>
   );
