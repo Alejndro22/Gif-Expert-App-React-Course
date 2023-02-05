@@ -1,20 +1,8 @@
-import { useEffect, useState } from "react";
 import { GifGridItem } from "./GifGridItem";
-import { getGifs } from "../helpers/getGifs";
+import { useFetchGifs } from "../hooks/useFetchGifs";
 
 export const GifGrid = ({ category }) => {
-  const [gifs, setGifs] = useState([]);
-
-  // No puedo usar Async en un useEffect pues es una promesa, pero se puede ejecutar
-  // Una funcion desde fuera que si sea async
-  const getRelatedGifs = async () => {
-    const newGifs = await getGifs(category);
-    setGifs(newGifs);
-  };
-
-  useEffect(() => {
-    getRelatedGifs();
-  }, []);
+  const { gifs, isLoading } = useFetchGifs(category);
 
   return (
     <>
