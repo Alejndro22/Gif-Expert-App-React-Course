@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("");
@@ -30,4 +31,9 @@ export const AddCategory = ({ onNewCategory }) => {
       />
     </form>
   );
+};
+
+// Debe ser obligatorio que se envie la funcion onNewCategory
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
 };
