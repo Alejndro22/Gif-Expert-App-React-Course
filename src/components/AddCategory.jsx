@@ -1,8 +1,8 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const AddCategory = ({ onNewCategory }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
@@ -15,15 +15,15 @@ export const AddCategory = ({ onNewCategory }) => {
     // setCategories((categories) => {
     //   return [inputValue, ...categories];
     // });
+    setInputValue('');
     onNewCategory(finalInput);
-    setInputValue("");
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} aria-label='form'>
       <input
-        type="text"
-        placeholder="Busca gifs"
+        type='text'
+        placeholder='Busca gifs'
         value={inputValue}
         // Como recibo el event puedo no mandarle nada, pues es el primer valor por defecto
         // onChange={(e) => onInputChange(e)}
